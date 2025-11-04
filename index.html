@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Video Fullscreen con redirección</title>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      overflow: hidden;
+      background-color: #000;
+    }
+    #container {
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
+      width: 100%;
+    }
+    #video-section {
+      flex: 9; /* 90% */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: black;
+    }
+    #bottom-section {
+      flex: 1; /* 10% */
+      background-color: #111;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: system-ui, sans-serif;
+      font-size: 1.2rem;
+    }
+    iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+  </style>
+</head>
+<body>
+  <div id="container">
+    <div id="video-section">
+      <div id="player"></div>
+    </div>
+    <div id="bottom-section">
+      Espera a que el video termine...
+    </div>
+  </div>
+
+  <script src="https://www.youtube.com/iframe_api"></script>
+  <script>
+    let player;
+
+    function onYouTubeIframeAPIReady() {
+      player = new YT.Player('player', {
+        videoId: 'mN0XZQhzzhg',  // tu ID de video
+        playerVars: {
+          enablejsapi: 1,
+          origin: window.location.origin, // evita error 153
+          rel: 0,
+          modestbranding: 1
+        },
+        events: {
+          onStateChange: (e) => {
+            if (e.data === YT.PlayerState.ENDED) {
+              miFuncionAlTerminar();
+            }
+          }
+        }
+      });
+    }
+
+    function miFuncionAlTerminar() {
+      // 🔁 Cambia el link a donde quieras redirigir
+      window.location.href = "https://7glrpbkklx3.typeform.com/to/QwdAPNZ0";
+    }
+  </script>
+</body>
+</html>
