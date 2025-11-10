@@ -48,7 +48,7 @@
       <div id="player"></div>
     </div>
     <div id="bottom-section">
-      Espera a que el video termine...
+      Espera a que el video termine para empezar la encuesta
     </div>
   </div>
 
@@ -76,8 +76,17 @@
     }
 
     function miFuncionAlTerminar() {
-      // 🔁 Cambia el link a donde quieras redirigir
-      window.location.href = "https://7glrpbkklx3.typeform.com/to/QwdAPNZ0";
+      // Lista de links posibles
+      const links = [
+        "https://7glrpbkklx3.typeform.com/to/QwdAPNZ0",
+        "https://7glrpbkklx3.typeform.com/to/AbCdEf12" // cambia este por tu segundo link
+      ];
+
+      // Selecciona uno al azar
+      const destino = links[Math.floor(Math.random() * links.length)];
+
+      // Redirige
+      window.location.href = destino;
     }
   </script>
 </body>
